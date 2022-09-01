@@ -8,10 +8,11 @@ n=$(($freeMem/10*7))
 export JVM_ARGS="-Xmn${n}m -Xms${s}m -Xmx${x}m"
 
 echo "START Running Jmeter on `date`"
-echo "Version 1.2"
+echo "Version 5.5"
 echo "JVM_ARGS=${JVM_ARGS}"
 echo "jmeter args=$@"
 
 # Keep entrypoint simple: we must pass the standard JMeter arguments
-./jmeter $@
+cd /opt/apache-jmeter-5.5/bin
+jmeter $@
 echo "END Running Jmeter on `date`"
