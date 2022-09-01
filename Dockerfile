@@ -22,6 +22,7 @@ RUN    apk update \
 	&& mkdir -p /opt  \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies
+COPY launch.sh /
 RUN chmod -R 765 launch.sh
 
 COPY plugins/ ${JMETER_PLUGINS_FOLDER}
@@ -42,7 +43,7 @@ RUN $JMETER_BIN/PluginsManagerCMD.sh install-all-except
 
 ENV PATH $PATH:$JMETER_BIN
 
-COPY launch.sh /
+
 
 WORKDIR ${JMETER_HOME}
 
