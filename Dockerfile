@@ -23,7 +23,7 @@ RUN    apk update \
 	&& mkdir -p /opt  \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies
-
+RUN chmod g+rwx ./launch.sh
 
 COPY plugins/ ${JMETER_PLUGINS_FOLDER}
 #COPY lib ${JMETER_LIB_FOLDER}
