@@ -1,5 +1,4 @@
 FROM alpine:3.16.2
-
 ARG JMETER_VERSION="5.5"
 
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
@@ -23,7 +22,7 @@ RUN    apk update \
 	&& mkdir -p /opt  \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies
-RUN chmod g+rwx /launch.sh
+RUN chmod -R 765 launch.sh
 
 COPY plugins/ ${JMETER_PLUGINS_FOLDER}
 #COPY lib ${JMETER_LIB_FOLDER}
